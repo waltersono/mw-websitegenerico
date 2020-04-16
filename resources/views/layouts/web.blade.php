@@ -8,8 +8,6 @@
         <link rel="stylesheet" type="text/css" href="{{ URL::to('src/css/custom.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{ URL::to('src/css/toastr.min.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{ URL::to('src/css/carousel.css')}}"/>
-    
-
         @yield('scripts')
         @yield('styles')
     </head>
@@ -26,9 +24,4 @@
         <script src="{{ URL::to('src/vendor/jquery-slim.min.js') }}"></script>
         <script src="{{ URL::to('src/vendor/popper.min.js') }}"></script>
     </body>
-    <br><br>
-    <!-- <footer class="footer navbar-fixed-bottom">
-        <div class="footer-copyright text-center py-3 text-muted">Copyright © 2020 <strong>NGOMA</strong>
-        </div>
-    </footer> -->
 </html>

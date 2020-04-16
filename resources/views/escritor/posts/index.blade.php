@@ -5,7 +5,7 @@
 @section('content')
 	<div class="card card-default">
 		<div class="card-header">Postagens
-			<a href="{{ route('postagens.create') }}" class="btn btn-success btn-sm float-right">Adicionar</a>
+			<a href="{{ route('posts.create') }}" class="btn btn-success btn-sm float-right">Adicionar</a>
 		</div>
 		<div class="card-body">
 			<table class="table">
@@ -16,16 +16,16 @@
 					<th></th>
 				</thead>
 				<tbody>
-					@foreach($postagens as $i)
+					@foreach($posts as $i)
 						<tr>
 							<td>{{ $i->pagina->titulo }}</td>
 							<td>{{ $i->titulo }}</td>
 							<td>
-								<a href="{{ route('postagens.edit',$i->id) }}" class="btn btn-warning btn-sm">Editar</a>
+								<a href="{{ route('posts.edit',$i->id) }}" class="btn btn-warning btn-sm">Editar</a>
 							</td>
 							<td>
 								<form action="" method="POST" id="deleteModalForm">
-									<button type="button" onclick="handleDelete({{ $i->id }},'postagens')" class="btn btn-danger btn-sm">Remover</button>
+									<button type="button" onclick="handleDelete({{ $i->id }},'posts')" class="btn btn-danger btn-sm">Remover</button>
 									@include('partials.modal-remover')
 									@csrf
 									@method('DELETE')

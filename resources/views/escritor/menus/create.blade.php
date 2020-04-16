@@ -1,6 +1,6 @@
 @extends('layouts.app_admin')
 @section('title')
-	Website Generico | Pefil
+	Website Generico | Menu
 @endsection
 @section('content')
 	<div class="card card-default">
@@ -12,7 +12,7 @@
 				<div class="form-group">
 					<label for="posicao">Posicao</label>
 					<input type="number" name="posicao" id="posicao" class="form-control form-control-sm"
-					value="{{ isset($menu) ? $menu->posicao : ''}}">
+					value="{{ isset($menu) ? $menu->posicao : '' }}">
 				</div>
 				<div class="form-group">
 					<label for="titulo">Titulo</label>

@@ -15,8 +15,7 @@ class PostagemController extends Controller
      */
     public function index()
     {
-        return view('escritor.postagens.index')
-            ->with('postagens',Postagem::orderBy('pagina_id')->get());
+        return view('escritor.postagens.index')->with('postagens',Postagem::orderBy('pagina_id')->get());
     }
 
     /**
@@ -26,8 +25,7 @@ class PostagemController extends Controller
      */
     public function create()
     {
-        return view('escritor.postagens.create')
-        ->with('paginas',Pagina::orderBy('menu_id')->get());
+        return view('escritor.postagens.create')->with('paginas',Pagina::orderBy('menu_id')->get());
     }
 
     /**

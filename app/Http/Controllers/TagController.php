@@ -14,7 +14,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        return view('escritor.tags.index')->with('tags',Tag::all());
     }
 
     /**
@@ -24,7 +24,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('escritor.tags.create');
     }
 
     /**
@@ -35,7 +35,18 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request,[
+            'titulo'    =>  'required|unique:tags',
+        ]);
+
+        $tag = new Tag();
+        $tag->titulo = $request->titulo;
+        $tag->save();
+
+        session()->flash('success','Tag criado com sucesso');
+
+        return redirect(route('tags.index'));
     }
 
     /**
@@ -57,7 +68,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('escritor.tags.create')->with('tag',$tag);
     }
 
     /**
@@ -69,7 +80,16 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        $this->validate($request,[
+            'titulo'    =>  'unique:tags,titulo,' . $tag->id
+        ]);
+
+        $tag->titulo = $request->titulo;
+        $tag->save();
+
+        session()->flash('success','Tag actualizado com sucesso');
+
+        return redirect(route('tags.index'));
     }
 
     /**
@@ -80,6 +100,15 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        if($tag->posts->count() > 0){
+            session()->flash('danger','Este tag tem postagens associados');
+        }else{
+            $tag->delete();
+
+            session()->flash('success','Tag removido com sucesso');
+        }
+        
+
+        return redirect(route('tags.index'));
     }
 }

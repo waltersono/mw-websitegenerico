@@ -26,5 +26,10 @@ class MenusTableSeeder extends Seeder
         $menu->posicao = 3;
         $menu->titulo = 'TICs';
         $menu->save();
+
+        $menu = new Menu();
+        $menu->posicao = 4;
+        $menu->titulo = 'Noticias';
+        $menu->save();
     }
 }

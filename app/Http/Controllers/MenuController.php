@@ -35,11 +35,12 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $this->validate($request,[
             'posicao'    =>  'required|unique:menus',
             'titulo'    =>  'required|unique:menus',
         ]);
+
 
         $menu = new Menu();
         $menu->posicao = $request->posicao;
@@ -104,8 +105,8 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        if($menu->submenus->count() > 0){
-            session()->flash('danger','Este menu tem submenus associados');
+        if($menu->paginas->count() > 0){
+            session()->flash('danger','Este menu tem paginas associadas a ele');
         }else{
             $menu->delete();
 

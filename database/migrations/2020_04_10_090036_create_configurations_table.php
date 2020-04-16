@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubmenusTable extends Migration
+class CreateConfigurationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateSubmenusTable extends Migration
      */
     public function up()
     {
-        Schema::create('submenus', function (Blueprint $table) {
+        Schema::create('configurations', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo')->unique();
-            $table->integer('posicao');
-            $table->integer('menu_id');
+            $table->string('site_name')->default('Website Generico');
+            $table->string('slogan')->default('Crie um novo website');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateSubmenusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('submenus');
+        Schema::dropIfExists('configurations');
     }
 }

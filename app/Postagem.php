@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Postagem extends Model
 {
-    protected $table = 'postagens';
-
+	protected $table = "postagem";
     public function pagina(){
     	return $this->belongsTo(Pagina::class);
     }

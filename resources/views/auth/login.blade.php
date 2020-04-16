@@ -7,8 +7,8 @@
 		<div class="row h-100 justify-content-center align-items-center">
 			<div class="col-md-4">
 				<div class="text-center mb-6">
-				    <h1 class="h1 font-weight-bold">Web site</h1>
-				    <p class="text-secondary">O Slogan do website generico</p>
+				    <h1 class="h1 font-weight-bold">{{ $configuration->site_name }}</h1>
+				    <p class="text-secondary">{{ $configuration->slogan }}</p>
 			  	</div>
 			  	<form action="{{ route('entrar') }}" method="post">
 			  	<div class="form-group">

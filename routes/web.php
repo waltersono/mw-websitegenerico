@@ -17,34 +17,39 @@ Route::get('/', 'WelcomeController@index')->name('welcome');
 
 Route::get('/page/{pagina}','WelcomeController@showPage')->name('show-pagina');
 
+Route::get('/contactos/create','ContactoController@create')->name('contactos.create');
+
+Route::post('/contactos','ContactoController@store')->name('contactos.store');
+
 Route::get('/login','LoginController@login')->name('login');
 
 Route::post('/entrar','LoginController@entrar')->name('entrar');
 
-
 Route::middleware(['auth'])->group(function(){
 	Route::get('/logout','LoginController@logout')->name('logout');
-
 	Route::get('/home','HomeController@index')->name('home');
-
 	Route::get('/perfil','PerfilController@index')->name('show-perfil-page');
-
 	Route::post('/perfil/update', 'PerfilController@update')->name('perfil.update');
-
 });
 
 Route::middleware(['auth','verifyIsAdmin'])->group(function(){
-	Route::resource('menus','MenuController');
-	Route::resource('submenus','SubmenuController');
-	Route::resource('paginas','PaginaController');
 	Route::resource('users','UserController');
+	Route::resource('configurations','ConfigurationController');
+	Route::resource('contactos','ContactoController')->only([
+		'index','destroy','show'
+	]);
 });
 
 Route::middleware(['auth','verifyIsEscritor'])->group(function(){
-	Route::resource('categorias','CategoriaController');
-	Route::resource('tags','TagController');
-	Route::resource('postagens','PostagemController');
+	Route::resources([
+		'menus'			=> 'MenuController',
+		'paginas'		=>	'PaginaController',
+		'categorias'	=>	'CategoriaController',
+		'tags'			=>	'TagController',
+		'posts'			=>	'PostController'
+	]);
 });
+
 
 
 
